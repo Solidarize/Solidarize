@@ -1,2 +1,7 @@
-language: java
-jdk: oraclejdk8
+ language: java
+ jdk: oraclejdk8
+ deploy:
+    provider: heroku
+       api_key:
+          secure: 40aa7de1-2dad-4b76-95d6-7f0d3ad8c4a1
+       app: solidarize-dev
