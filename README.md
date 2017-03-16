@@ -9,3 +9,4 @@
 - Travis
 - Herokku
 
+http://solidarize-dev.herokuapp.com/
