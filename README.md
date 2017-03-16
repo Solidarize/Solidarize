@@ -11,3 +11,5 @@
 - Herokku
 
 http://solidarize-dev.herokuapp.com/
+
+https://travis-ci.org/willmenn/Solidarize
