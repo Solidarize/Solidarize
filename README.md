@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/willmenn/Solidarize.svg?branch=master)](https://travis-ci.org/willmenn/Solidarize)
 # Solidarize
 
 ### Tech Stack:
