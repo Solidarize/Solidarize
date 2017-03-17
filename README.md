@@ -10,6 +10,8 @@
 - Travis
 - Herokku
 
-http://solidarize-dev.herokuapp.com/
+___
 
-https://travis-ci.org/willmenn/Solidarize
+[Heroku Link](http://solidarize-dev.herokuapp.com/)
+
+[Travis Link](https://travis-ci.org/willmenn/Solidarize)
