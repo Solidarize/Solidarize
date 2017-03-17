@@ -6,7 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SolidarizeApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SolidarizeApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SolidarizeApplication.class, args);
+    }
+
+
 }
