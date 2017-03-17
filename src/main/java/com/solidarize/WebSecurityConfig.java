@@ -19,7 +19,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/**").permitAll();
         http.authorizeRequests()
-                .antMatchers("/css/**", "/jquery/**", "/bootstrap/**", "/jquery/images/**", "/webjars/**").permitAll();
+                .antMatchers("/css/**", "/jquery/**", "/bootstrap/**", "/jquery/images/**", "/webjars/**")
+                .permitAll();
+        http.csrf().disable();
         http.headers()
                 .contentTypeOptions()
                 .and().xssProtection()
