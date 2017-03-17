@@ -6,6 +6,7 @@ import org.springframework.social.facebook.api.PagedList;
 import org.springframework.social.facebook.api.Post;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -19,6 +20,11 @@ public class HomeController {
     public HomeController(Facebook facebook, ConnectionRepository connectionRepository) {
         this.facebook = facebook;
         this.connectionRepository = connectionRepository;
+    }
+
+    @ExceptionHandler(Exception.class)
+    public String errorHandler(Exception ex) {
+        return ex.getStackTrace().toString();
     }
 
     @GetMapping
