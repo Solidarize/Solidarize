@@ -2,6 +2,8 @@
 # Solidarize
 
 ### Tech Stack:
+![TechStack](techStack/techStack.jpg)
+
 - Java 8
 - Spring Boot
 - Maven
