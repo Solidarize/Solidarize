@@ -15,13 +15,15 @@ public class Event {
     private Integer id;
     private String name;
     private String owner;
+    private Integer rank;
 
     public Event() {
     }
 
-    public Event(String name, String owner) {
+    public Event(String name, String owner, Integer rank) {
         this.name = name;
         this.owner = owner;
+        this.rank = rank;
     }
 
     public String getName() {
@@ -36,6 +38,10 @@ public class Event {
         return id;
     }
 
+    public Integer getRank() {
+        return rank;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -46,5 +52,9 @@ public class Event {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public void setRank(Integer rank) {
+        this.rank = rank;
     }
 }

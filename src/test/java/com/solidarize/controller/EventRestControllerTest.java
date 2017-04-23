@@ -29,7 +29,7 @@ public class EventRestControllerTest {
     @Test
     public void shouldBeAbeToGetEventById() throws Exception {
         int id = 1;
-        Event event = new Event("name", "owner");
+        Event event = new Event("name", "owner",3);
         when(service.getEventById(eq(id))).thenReturn(event);
         Event response = restController.getEventById(id);
         assertEquals(event, response);
@@ -37,7 +37,7 @@ public class EventRestControllerTest {
 
     @Test
     public void shouldBeAbleToCreateEvent() throws Exception {
-        Event event = new Event("name", "owner");
+        Event event = new Event("name", "owner",4);
         when(service.createEvent(eq(event))).thenReturn(event);
         Resource<Event> resource = restController.createEvent(event);
         assertEquals(event, resource.getContent());

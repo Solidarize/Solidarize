@@ -1,1 +1,1 @@
-create table event ( id integer, name varchar(60), owner varchar(50));
+create table event ( id integer, name varchar(60), owner varchar(50), rank INTEGER);
