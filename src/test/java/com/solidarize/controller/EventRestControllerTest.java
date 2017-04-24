@@ -1,7 +1,9 @@
 package com.solidarize.controller;
 
 import com.solidarize.model.Event;
+import com.solidarize.model.Institution;
 import com.solidarize.service.EventService;
+import java.util.Date;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,7 +31,8 @@ public class EventRestControllerTest {
     @Test
     public void shouldBeAbeToGetEventById() throws Exception {
         int id = 1;
-        Event event = new Event("name", "owner");
+        Institution institution = new Institution("nome","descricao");
+        Event event = new Event("nome", "descricao", 0, new Date(), institution);
         when(service.getEventById(eq(id))).thenReturn(event);
         Event response = restController.getEventById(id);
         assertEquals(event, response);
@@ -37,7 +40,8 @@ public class EventRestControllerTest {
 
     @Test
     public void shouldBeAbleToCreateEvent() throws Exception {
-        Event event = new Event("name", "owner");
+        Institution institution = new Institution("nome","descricao");
+        Event event = new Event("nome", "descricao", 0, new Date(), institution);
         when(service.createEvent(eq(event))).thenReturn(event);
         Resource<Event> resource = restController.createEvent(event);
         assertEquals(event, resource.getContent());

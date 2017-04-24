@@ -22,4 +22,21 @@ public class EventService {
     public Event createEvent(Event event) {
         return eventRepository.save(event);
     }
+    
+    public Iterable<Event> readEvents(){
+      return eventRepository.findAll();
+    }
+    
+    public boolean deleteEvent(Event event){
+        try{
+           eventRepository.delete(event);
+           return true;
+        }catch(Exception Ex){
+           return false; 
+        }
+    }
+    
+    public Event findEvent(Event event){
+        return eventRepository.findOne(event.getId());
+    }        
 }
