@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>RegistryEvent</title>
+    <link rel="stylesheet"
+          href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"/>
+    <link rel="stylesheet"
+          href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css"/>
+</head>
+<body>
+
+<form th:action="@{/event}" id="createEventForm">
+    <div class="input-group" id="namediv">
+        <input tabindex="1" type="text" class="form-control" placeholder="Nome"
+               aria-describedby="basic-addon1" name="nome" id="eventName"
+               maxlength="30" th:field="${event.name}"
+               data-toggle="tooltip" data-placement="left"
+               title="Nome do Evento" rel="txtTooltip"/>
+    </div>
+    <div class="input-group" id="ownerdiv">
+        <input tabindex="1" type="text" class="form-control"
+               placeholder="Instituicao"
+               aria-describedby="basic-addon1" name="nome" id="eventOwner"
+               maxlength="30" th:field="${event.owner}"
+               data-toggle="tooltip" data-placement="left"
+               title="Nome da Instuicao" rel="txtTooltip"/>
+    </div>
+    <div class="input-group" id="submitdiv">
+        <input tabindex="12" type="submit" value="Cadastrar Evento"
+               class="btn btn-lg btn-success btn-submit"
+               id="submit-form"/>
+    </div>
+</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"/>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"/>
+<script th:inline="javascript">
+/*<![CDATA[*/
+
+    $('#createEventForm').submit(function () {
+        var url = $('#createEventForm').attr('action');
+        var body = $('#createEventForm').serializeArray();
+
+        function objectifyForm(formArray) {
+
+            var returnArray = {};
+            for (var i = 0; i < formArray.length; i++) {
+                returnArray[formArray[i]['name']] = formArray[i]['value'];
+            }
+            return returnArray;
+        }
+
+        body = objectifyForm(body);
+        var data=JSON.stringify(body);
+        $.ajax({
+            url:url,
+            type:"POST",
+            data:data,
+            contentType:"application/json; charset=utf-8",
+            dataType:"json"
+        })
+
+        return false;
+    });
+
+    /*]]>*/
+</script>
+</body>
+</html>
