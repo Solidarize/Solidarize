@@ -33,4 +33,10 @@ public class EventRestController {
     public Resource<Event> createEvent(@RequestBody Event event) {
         return new Resource<>(eventService.createEvent(event));
     }
+    
+    @RequestMapping(method = POST, consumes = APPLICATION_JSON_VALUE)
+    public Resource<Event> updateEvent(@RequestBody Event event) {
+        return new Resource<>(eventService.updateEvent(event));
+    }
+    
 }
