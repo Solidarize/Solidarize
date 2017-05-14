@@ -18,6 +18,19 @@ public class Institution {
 	private String address;
 	private String description;
 	private String password;
+	
+	public Institution() {
+		super();
+	}
+
+	public Institution(String name, String cnpj, String address, String description, String password) {
+		super();
+		this.name = name;
+		this.cnpj = cnpj;
+		this.address = address;
+		this.description = description;
+		this.password = password;
+	}
 
 	public Integer getId() {
 		return id;
