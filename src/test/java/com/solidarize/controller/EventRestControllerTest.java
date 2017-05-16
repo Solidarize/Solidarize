@@ -43,4 +43,13 @@ public class EventRestControllerTest {
         assertEquals(event, resource.getContent());
 
     }
+    
+    @Test
+    public void shouldBeAbleToUpdateEvent() throws Exception {
+        Event event = new Event("name", "owner",4);
+        when(service.updateEvent(eq(event))).thenReturn(event);
+        Resource<Event> resource = restController.updateEvent(event);
+        assertEquals(event, resource.getContent());
+    }
+
 }
