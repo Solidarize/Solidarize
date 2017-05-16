@@ -1,5 +1,7 @@
 package com.solidarize.controller;
 
+import com.solidarize.model.Institution;
+import com.solidarize.service.InstitutionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Resource;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,9 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
-
-import com.solidarize.model.Institution;
-import com.solidarize.service.InstitutionService;
 
 @RestController
 @RequestMapping("/institution")
@@ -25,7 +24,7 @@ public class InstitutionRestController {
 		this.institutionService = institutionService;
 	}
 	
-	@RequestMapping(path = "/${id}", method = GET)
+	@RequestMapping(path = "/{id}", method = GET)
 	public Institution getInstitutionById(@PathVariable("id") Integer id){
 		return institutionService.findInstitutionById(id);
 	}
