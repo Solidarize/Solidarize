@@ -1,0 +1,11 @@
+package com.solidarize.repository;
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import com.solidarize.model.Institution;
+
+@Repository
+public interface InstitutionRepository  extends CrudRepository<Institution, Integer>{
+	Institution findInstitutionById(Integer id);
+}
