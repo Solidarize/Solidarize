@@ -23,13 +23,13 @@ ___
 ![EventosDetalhes](mockup/EventosDetalhes.png)
 
 ### Cadastro de Evento:
-![EventosCadastro](mockup/CadastroEvento.png)
+![CadastroEvento](mockup/CadastroEvento.png)
 
 ### Cadastro de Instituição:
-![InstituicaoCadastro](mockup/CadastroInstituicao.png)
+![CadastroInstituicao](mockup/CadastroInstituicao.png)
 
 ### Cadastro de Instituição:
-![InstituicaoCadastro](mockup/CadastroInstituicao.png)
+![CadastroInstituicao](mockup/CadastroInstituicao.png)
 
 ### Cadastro de Instituição:
-![InstituicaoGerenciamento](mockup/GerenciarInstituicao.png)
+![GerenciarInstituicao](mockup/GerenciarInstituicao.png)
