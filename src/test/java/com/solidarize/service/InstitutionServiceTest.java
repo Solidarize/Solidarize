@@ -43,9 +43,22 @@ public class InstitutionServiceTest {
 		Integer id = 1;
 		Institution institution = new Institution("Instituição Teste", "06514185000139", "Rua Aleatória, Nº 5", "Instituição para teste", "ASKDJASLDKAJSD");
 		
-		when(repository.findInstitutionById(eq(id))).thenReturn(institution);
+		when(repository.findById(eq(id))).thenReturn(institution);
 		
 		Institution response = service.findInstitutionById(id);
+		
+		assertEquals(institution, response);
+	}
+	
+	@Test 
+	public void shouldGetInstitutionByCnpjAndCpf() throws Exception{
+		String cnpj = "06514185000139";
+		String password = "ASKDJASLDKAJSD";
+		Institution institution = new Institution("Instituição Teste", "06514185000139", "Rua Aleatória, Nº 5", "Instituição para teste", "ASKDJASLDKAJSD");
+		
+		when(repository.findByCnpjAndPassword(eq(cnpj), eq(password))).thenReturn(institution);
+		
+		Institution response = service.login(cnpj, password);
 		
 		assertEquals(institution, response);
 	}

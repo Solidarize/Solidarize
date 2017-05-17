@@ -7,5 +7,6 @@ import com.solidarize.model.Institution;
 
 @Repository
 public interface InstitutionRepository  extends CrudRepository<Institution, Integer>{
-	Institution findInstitutionById(Integer id);
+	Institution findById(Integer id);
+	Institution findByCnpjAndPassword(String cnpj, String password);
 }
