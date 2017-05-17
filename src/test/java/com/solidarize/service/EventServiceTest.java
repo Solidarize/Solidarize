@@ -1,16 +1,17 @@
 package com.solidarize.service;
 
-import com.solidarize.model.Event;
-import com.solidarize.repository.EventRepository;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.when;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.when;
+import com.solidarize.model.Event;
+import com.solidarize.repository.EventRepository;
 
 @RunWith(MockitoJUnitRunner.class)
 public class EventServiceTest {
@@ -28,7 +29,7 @@ public class EventServiceTest {
     public void shouldBeAbleToGetEvent() throws Exception {
         int id = 1;
         Event event = new Event("name", "owner");
-        when(repository.findEventById(eq(id))).thenReturn(event);
+        when(repository.findById(eq(id))).thenReturn(event);
         Event response = service.getEventById(id);
         assertEquals(event, response);
     }

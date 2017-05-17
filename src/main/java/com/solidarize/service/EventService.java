@@ -16,7 +16,7 @@ public class EventService {
     }
 
     public Event getEventById(Integer id) {
-        return eventRepository.findEventById(id);
+        return eventRepository.findById(id);
     }
 
     public Event createEvent(Event event) {
