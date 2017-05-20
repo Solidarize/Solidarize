@@ -17,7 +17,7 @@ public class InstitutionService {
 	}
 	
 	public Institution findInstitutionById(Integer id){
-		return institutionRepository.findInstitutionById(id);
+		return institutionRepository.findById(id);
 	}
 	
 	public Institution saveInstitution(Institution institution){
@@ -26,5 +26,9 @@ public class InstitutionService {
 	
 	public void deleteInstitution(Institution institution){
 		institutionRepository.delete(institution);
+	}
+	
+	public Institution login(String cnpj, String password){
+		return this.institutionRepository.findByCnpjAndPassword(cnpj, password);		
 	}
 }
