@@ -9,6 +9,8 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.hateoas.Resource;
 
+import java.time.LocalDate;
+
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.when;
@@ -29,7 +31,7 @@ public class EventRestControllerTest {
     @Test
     public void shouldBeAbeToGetEventById() throws Exception {
         int id = 1;
-        Event event = new Event("name", "owner",3);
+        Event event = new Event("name", "owner",3,  LocalDate.now());
         when(service.getEventById(eq(id))).thenReturn(event);
         Event response = restController.getEventById(id);
         assertEquals(event, response);
@@ -37,7 +39,7 @@ public class EventRestControllerTest {
 
     @Test
     public void shouldBeAbleToCreateEvent() throws Exception {
-        Event event = new Event("name", "owner",4);
+        Event event = new Event("name", "owner",4, LocalDate.now());
         when(service.createEvent(eq(event))).thenReturn(event);
         Resource<Event> resource = restController.createEvent(event);
         assertEquals(event, resource.getContent());
@@ -46,7 +48,7 @@ public class EventRestControllerTest {
     
     @Test
     public void shouldBeAbleToUpdateEvent() throws Exception {
-        Event event = new Event("name", "owner",4);
+        Event event = new Event("name", "owner",4, LocalDate.now());
         when(service.updateEvent(eq(event))).thenReturn(event);
         Resource<Event> resource = restController.updateEvent(event);
         assertEquals(event, resource.getContent());

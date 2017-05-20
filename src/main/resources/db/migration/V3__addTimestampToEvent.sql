@@ -1,0 +1,1 @@
+alter TABLE event add COLUMN timestamp DATE ;

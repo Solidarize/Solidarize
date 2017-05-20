@@ -8,6 +8,8 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.time.LocalDate;
+
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.verify;
@@ -28,7 +30,7 @@ public class EventServiceTest {
     @Test
     public void shouldBeAbleToGetEvent() throws Exception {
         int id = 1;
-        Event event = new Event("name", "owner", 2);
+        Event event = new Event("name", "owner", 2, LocalDate.now());
         when(repository.findEventById(eq(id))).thenReturn(event);
         Event response = service.getEventById(id);
         assertEquals(event, response);
@@ -36,7 +38,7 @@ public class EventServiceTest {
 
     @Test
     public void shouldBeAbleToSaveAnEvent() throws Exception {
-        Event event = new Event("name", "owner", 2);
+        Event event = new Event("name", "owner", 2, LocalDate.now());
         when(repository.save(eq(event))).thenReturn(event);
         Event response = service.createEvent(event);
         assertEquals(event, response);
