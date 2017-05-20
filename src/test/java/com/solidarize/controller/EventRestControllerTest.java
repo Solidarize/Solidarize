@@ -31,7 +31,7 @@ public class EventRestControllerTest {
     @Test
     public void shouldBeAbeToGetEventById() throws Exception {
         int id = 1;
-        Event event = new Event("name", "owner",3,  LocalDate.now());
+        Event event = new Event("name", "owner",3,  LocalDate.now(),"title","subTitle","address", LocalDate.now(),"description");
         when(service.getEventById(eq(id))).thenReturn(event);
         Event response = restController.getEventById(id);
         assertEquals(event, response);
@@ -39,7 +39,7 @@ public class EventRestControllerTest {
 
     @Test
     public void shouldBeAbleToCreateEvent() throws Exception {
-        Event event = new Event("name", "owner",4, LocalDate.now());
+        Event event = new Event("name", "owner",4, LocalDate.now(),"title","subTitle","address", LocalDate.now(),"description");
         when(service.createEvent(eq(event))).thenReturn(event);
         Resource<Event> resource = restController.createEvent(event);
         assertEquals(event, resource.getContent());
@@ -48,7 +48,7 @@ public class EventRestControllerTest {
     
     @Test
     public void shouldBeAbleToUpdateEvent() throws Exception {
-        Event event = new Event("name", "owner",4, LocalDate.now());
+        Event event = new Event("name", "owner",4, LocalDate.now(),"title","subTitle","address", LocalDate.now(),"description");
         when(service.updateEvent(eq(event))).thenReturn(event);
         Resource<Event> resource = restController.updateEvent(event);
         assertEquals(event, resource.getContent());
