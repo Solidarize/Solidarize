@@ -2,56 +2,187 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>RegistryEvent</title>
-    <link rel="stylesheet"
-          href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"/>
-    <link rel="stylesheet"
-          href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css"/>
+    <title>Solidarize - Todos juntos por um mundo melhor</title>
+    
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/style/solidarize.css" />
+    
 </head>
 <body>
+<!-- Start Header -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/index" title="Solidarize">
+                  Solidarize
+                </a>
+            </div>
 
-<form th:action="@{/event}" id="createEventForm">
-    <div class="input-group" id="namediv">
-        <input tabindex="1" type="text" class="form-control" placeholder="Nome"
-               aria-describedby="basic-addon1" name="nome" id="eventName"
-               maxlength="30" th:field="${event.name}"
-               data-toggle="tooltip" data-placement="left"
-               title="Nome do Evento" rel="txtTooltip"/>
-    </div>
-    <div class="input-group" id="ownerdiv">
-        <input tabindex="1" type="text" class="form-control"
-               placeholder="Instituicao"
-               aria-describedby="basic-addon1" name="nome" id="eventOwner"
-               maxlength="30" th:field="${event.owner}"
-               data-toggle="tooltip" data-placement="left"
-               title="Nome da Instuicao" rel="txtTooltip"/>
-    </div>
-    <div class="input-group" id="submitdiv">
-        <input tabindex="12" type="submit" value="Cadastrar Evento"
-               class="btn btn-lg btn-success btn-submit"
-               id="submit-form"/>
-    </div>
-</form>
+            <div class="collapse navbar-collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="/index">Home</a></li>
+                    <li class="active"><a href="/listEvent">Eventos</a></li>
+                    <li><a href="/sobre">Sobre</a></li>
+                </ul>
+                <form action="/connect/facebook" method="POST">
+                    <input type="hidden" name="scope" value="user_posts" />
+                    <p class="navbar-text navbar-right" style="margin-top: 7px; margin-bottom: 5px; margin-right: 10px">
+                        <button type="submit" class="btn btn-success">Conectar com Facebook</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </nav><!-- End Header -->
+    
+    <!-- titulo -->   
+    <div class="row destaques">
+        <div class="col-md-12">
+            <h3 class="h3-destaques pull-left">Cadastrar Evento</h3><br/><br/>
+        </div>
+    </div><!-- Fim titulo -->
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"/>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"/>
+<!-- Div sobre nós-->    
+    <div class="row">
+        <div class="container-fluid">
+            <br/>
+            <form id="createEventForm">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="form-group">
+                        <h3>Título do Evento:</h3>
+                        <input tabindex="1" type="text" class="form-control input-lg" placeholder="Título do Evento"
+                               aria-describedby="basic-addon1" name="title" id="eventTitle"
+                               maxlength="30"
+                               data-toggle="tooltip" data-placement="left"
+                               title="Título do Evento" rel="txtTooltip"/>
+                    </div>
+                </div>
+                
+                <div class="col-md-5 col-md-offset-1">
+                    <div class="form-group">
+                        <h3>Descrição do Evento:</h3>
+                        <textarea tabindex="2" class="form-control" placeholder="Descrição do Evento"
+                               aria-describedby="basic-addon1" name="description" id="eventDescription"
+                               maxlength="255" rows="20"
+                               data-toggle="tooltip" data-placement="left"
+                               title="Descrição do Evento" rel="txtTooltip"></textarea>
+                    </div>
+                </div>
+                
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <h3>Local do Evento:</h3>
+                        <div class="form-group">
+                            <div class="form-inline">
+                                <select tabindex="3" class="form-control" placeholder="Unidade Federativa"
+                                   aria-describedby="basic-addon1" name="state" id="eventUF"
+                                    data-toggle="tooltip" data-placement="left"
+                                   title="Unidade Federativa do Evento" rel="txtTooltip">
+                                    <option selected="true" value="UF">UF</option>
+                                    <option value="PR">PR</option>
+                                    <option value="SC">SC</option>
+                                    <option value="RS">RS</option>
+                                </select>
+                                <input tabindex="4" type="text" class="form-control" placeholder="Cidade"
+                                   aria-describedby="basic-addon1" name="city" id="eventCity"
+                                   maxlength="30"
+                                   data-toggle="tooltip" data-placement="left"
+                                   title="Cidade do Evento" rel="txtTooltip"/>
+                            </div>
+                        </div>
+                        
+                       <div class="form-group">
+                            <input tabindex="5" type="text" class="form-control" placeholder="Bairro"
+                                   aria-describedby="basic-addon1" name="neighborhood" id="eventDistrict"
+                                   maxlength="30"
+                                   data-toggle="tooltip" data-placement="left"
+                                   title="Bairro do Evento" rel="txtTooltip"/>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input tabindex="6" type="text" class="form-control" placeholder="Logradouro"
+                                   aria-describedby="basic-addon1" name="house" id="eventAddress"
+                                   maxlength="30"
+                                   data-toggle="tooltip" data-placement="left"
+                                   title="Bairro do Evento" rel="txtTooltip"/>
+                        </div>
+                        
+                        <div class="form-group">
+                            <br/>
+                            <h3>Foto de divulgação:</h3>
+                            <div class="input-group file-preview">
+                                <input placeholder="" type="text" class="form-control file-preview-filename" disabled="disabled" id="fileName"/>
+                                <!-- don't give a name === doesn't send on POST/GET --> 
+                                <span class="input-group-btn"> 
+                                    <!-- file-preview-clear button -->
+                                    <button type="button" class="btn btn-default file-preview-clear" style="display:none;"> <span class="glyphicon glyphicon-remove"></span> Limpar </button>
+                                    <!-- file-preview-input -->
+                                    <div class="btn btn-default file-preview-input">
+                                        <span class="glyphicon glyphicon-folder-open"></span>
+                                        <span class="file-preview-input-title">Escolher Imagem</span>
+                                        <input tabindex="7" type="file" accept="image/*" name="input-file-preview"/>
+                                        <!-- rename it --> 
+                                    </div>
+                                    <button type="button" class="btn btn-labeled btn-primary"> <span class="btn-label"><i class="glyphicon glyphicon-upload"></i> </span>Upload</button>
+                                </span>
+                            </div><!-- /input-group image-preview [TO HERE]--> 
+                        </div>
+                        
+                        <br/><br/><br/><br/>
+                        
+                        <div class="input-group pull-left" id="canceldiv">
+                            <input tabindex="8" type="reset" value="Cancelar"
+                                   class="btn btn-lg btn-danger btn-submit"
+                                   id="cancel-btn"/>
+                        </div>
+                        
+                        <div class="input-group pull-right" id="submitdiv">
+                            <input tabindex="9" type="submit" value="Cadastrar Evento"
+                                   class="btn btn-lg btn-success btn-submit"
+                                   id="submit-form"/>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div> <!-- Fim Div sobre nos -->
 <script th:inline="javascript">
 /*<![CDATA[*/
 
     $('#createEventForm').submit(function () {
-        var url = $('#createEventForm').attr('action');
+        var url =  "/event"//$('#createEventForm').attr('action');
         var body = $('#createEventForm').serializeArray();
 
         function objectifyForm(formArray) {
 
             var returnArray = {};
             for (var i = 0; i < formArray.length; i++) {
+                var value= formArray[i]['value'];
                 returnArray[formArray[i]['name']] = formArray[i]['value'];
             }
             return returnArray;
         }
 
         body = objectifyForm(body);
+        body["timestamp"]=new Date().toISOString();
+        body["event_time"]=new Date().toISOString();
+        body["address"]=body["state"] +" - "+ body["city"] + " "+ body["neighborhood"] +" "+ body["house"];
         var data=JSON.stringify(body);
         $.ajax({
             url:url,
@@ -66,5 +197,54 @@
 
     /*]]>*/
 </script>
+<br/><br/>
+<!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-above">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-4">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h2>NOSSAS MÍDIAS</h2>
+                        <br/>   
+                        <ul class="list-inline">
+                            <li>
+                                <a href="#" class="btn-social"><i class="fa fa-fw fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn-social"><i class="fa fa-fw fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn-social"><i class="fa fa-fw fa-git"></i></a>
+                                
+                            </li>
+                            <li>
+                                <a href="#" class="btn-social"><i class="fa fa-fw fa-linkedin"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn-social"><i class="fa fa-fw fa-dribbble"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright &copy; Solidarize 2017
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
 </body>
 </html>

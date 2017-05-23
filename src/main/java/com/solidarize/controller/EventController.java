@@ -23,8 +23,22 @@ public class EventController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/index", method = GET)
+    public ModelAndView getIndex(ModelAndView modelAndView) {
+        modelAndView.setViewName("index");
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/", method = GET)
-    public String redirectToListEvent() {
-        return "redirect:" + LIST_EVENT_URL;
+    public ModelAndView redirectToIndex(ModelAndView modelAndView) {
+        modelAndView.setViewName("redirect:index");
+        return modelAndView;
+    }
+
+
+    @RequestMapping(value = "/sobre", method = GET)
+    public ModelAndView getSobre(ModelAndView modelAndView) {
+        modelAndView.setViewName("sobre");
+        return modelAndView;
     }
 }

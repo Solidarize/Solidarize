@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <title>Solidarize - Todos juntos por um mundo melhor</title>
@@ -37,9 +37,9 @@
 
             <div class="collapse navbar-collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="/index">Home</a></li>
                     <li><a href="/listEvent">Eventos</a></li>
-                    <li><a href="/sobre">Sobre</a></li>
+                    <li class="active"><a href="#">Sobre</a></li>
                 </ul>
                 <form action="/connect/facebook" method="POST">
                     <input type="hidden" name="scope" value="user_posts" />
@@ -51,33 +51,45 @@
         </div>
     </nav><!-- End Header -->
     
-<!-- Section Destaques -->
+<!-- titulo -->   
     <div class="row destaques">
         <div class="col-md-12">
-            <h2 class="h2-destaques">solidarize</h2>
-            <h3 class="h3-destaques">Todos juntos em busca de um mundo melhor!</h3><br/><br/>     
-            <br/><br/>
- 
-            <center><img class="img-responsive" src="/style/background.png" style="margin:0px;"/></center>
+            <h3 class="h3-destaques pull-left">Sobre Nós</h3><br/><br/>
         </div>
-    </div> 
+    </div><!-- Fim titulo -->
 
+<!-- Div sobre nós-->    
     <div class="row">
-        <div class="destaques-footer">
-            <h4>O Solidarize foi criado com a intenção de divulgar serviços de cunho social
-                e unir instituições a pessoas que tem o interesse de contribuir.</h4>
-            <a class="btn btn-destaque" href="sobre.html">saiba mais</a>
+        <div class="container">
+            <br/><br/>
+            <blockquote>
+                <p style="text-align: justify"><i>"A solidariedade é uma qualidade que dignifica o ser humano. É um laço recíproco entre as pessoas, entre as comunidades e grupos humanos;  é um sentimento que envolve e constrói possibilidades transformadoras.
+Ser solidário é aderir, apoiar concretamente a uma causa, com princípio, valor e sentimento humano. Ser solidário é uma atitude humano e social que vai ao outro, com vontade e determinação libertadora. Ser solidário é apresentar-se ao mundo consciente da responsabilidade que vincula os seres humanos, consciente do papel que podemos representar uns para os outros: para a família, para a comunidade, para a cidade, para a humanidade. Ser solidário é ir em busca da missão, é perseguir o ideal do desenvolvimento humano. Ser solidário é ser luz, é ser ajuda, é ser muito mais do que o sistema sócio-político e econômico induz que podemos ser."</i></p>
+                <footer>Elias J Silva</footer>
+            </blockquote>
+
+            <h1>Sobre o Solidarize</h1>
+            <div style="text-align: justify">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
+                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+                dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
+                deserunt mollit anim id est laborum.<br/><br/>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
+                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+                dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
+                deserunt mollit anim id est laborum.<br/><br/>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
+                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+                dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
+                deserunt mollit anim id est laborum.
+                <br/><br/><br/>                          
+            </div>
         </div>
-    </div><!-- Fim Section Destaques -->
-
-<!-- Conteudo principal -->
-    <div class="row content" id="listEvent">
-        <h1>Eventos em destaques:</h1>
-        
-        
-    </div>
-<!-- Fim Conteudo principal -->
-
+    </div> <!-- Fim Div sobre nos -->
+    
 <!-- Footer -->
     <footer class="text-center">
         <div class="footer-above">
@@ -126,62 +138,5 @@
             </div>
         </div>
     </footer><!-- End Footer -->
-
-<form th:action="@{/events}" id="getEvents">
-</form>
-
-<script th:inline="javascript">
-    /*<![CDATA[*/
-
-    function evento(description, title, subTitle,address,eventTime, rank, month,day) {
-        return "<div class=\"row\" style='width:860px;margin:auto;'>\
-    <p><img src=\"../../image/evento.jpg\" class=\"img-responsive img-thumbnail\" width=\"100%\"/></p>\
-        </div>\
-        <div class=\"row\" style='width:860px;margin:auto;'>\
-    <div class=\"post-date\">\
-    <i class=\"fa fa-calendar fa-2x\"></i><br/>\
-        <span class=\"month\">"+month+"</span><br/>\
-        <span class=\"day\">"+day+"</span><br/>\
-        <hr class=\"hr-date\"/>\
-        <div>\
-        <span class=\"like-box-heart\">\
-        <i class=\"fa fa-heart\"></i>\
-        </span>\
-        <span class=\"like-box-score\">\
-        <b>"+ rank+"</b>\
-        </span>\
-        </div>\
-        </div>\
-        <div class=\"float-right\">\
-        <h2 class=\"post-Title\">"+title+"</h2>\
-    <h4 class=\"post-sub-title\">"+subTitle+"</h4>\
-    <p class=\"post-info\">\
-        <i class=\"fa fa-university\"></i> <a href=\"#\">Instituição</a> |\
-        <i class=\"fa fa-map-o\"></i> "+address+" |\
-        <i class=\"fa fa-clock-o\"></i> "+eventTime+"\
-        </p>\
-        <div style=\"text-align: justify\">"+ description+ "\
-    <button class=\"btn btn-read-more pull-right\">Leia mais &nbsp;&nbsp;&nbsp;&nbsp;<i class=\"fa fa-angle-right\"></i></button>\
-        </div>\
-        </div>\
-        <br/><br/><br/><br/>\
-        ";
-    }
-
-
-
-
-    $.get("/events/rank?offset=3&order=desc", function (data) {
-        data.forEach(function (event) {
-            var eventDate = new Date(event.event_time);
-            var month = {0:"JAR", 1: "FEV", 2:"MAR", 3: "ABR", 4: "MAI", 5:"JUN", 6:"JUL",7:"AGO",8:"SET",9:"OUT",10:"NOV",11:"DEZ"};
-            $('#listEvent').append(evento(event.description,
-                event.title, event.sub_title,event.address,event.event_time,event.rank,month[eventDate.getUTCMonth()],eventDate.getUTCDate()));
-        })
-
-    })
-
-    /*]]>*/
-</script>
 </body>
 </html>

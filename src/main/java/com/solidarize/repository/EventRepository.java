@@ -15,4 +15,8 @@ public interface EventRepository extends CrudRepository<Event, Integer> {
     List<Event> findAllByOrderByTimestampDesc(Pageable pageable);
 
     List<Event> findAllByOrderByTimestampAsc(Pageable pageable);
+
+    List<Event> findAllByOrderByRankDesc(Pageable pageable);
+
+    List<Event> findAllByOrderByRankAsc(Pageable pageable);
 }
