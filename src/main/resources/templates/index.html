@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <title>Solidarize - Todos juntos por um mundo melhor</title>
     
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/static/style/solidarize.css" />
+    <link rel="stylesheet" href="/style/solidarize.css" />
     
 </head>
 <body>
@@ -30,7 +30,7 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html" title="Solidarize">
+                <a class="navbar-brand" href="/index" title="Solidarize">
                   Solidarize
                 </a>
             </div>
@@ -38,8 +38,8 @@
             <div class="collapse navbar-collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Home</a></li>
-                    <li><a href="event/listEvent.html">Eventos</a></li>
-                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="/listEvent">Eventos</a></li>
+                    <li><a href="/sobre">Sobre</a></li>
                 </ul>
                 <form action="/connect/facebook" method="POST">
                     <input type="hidden" name="scope" value="user_posts" />
@@ -58,7 +58,7 @@
             <h3 class="h3-destaques">Todos juntos em busca de um mundo melhor!</h3><br/><br/>     
             <br/><br/>
  
-            <center><img class="img-responsive" src="../static/style/background.png" style="margin:0px;"/></center>
+            <center><img class="img-responsive" src="/style/background.png" style="margin:0px;"/></center>
         </div>
     </div> 
 
@@ -71,7 +71,7 @@
     </div><!-- Fim Section Destaques -->
 
 <!-- Conteudo principal -->
-    <div class="row content">
+    <div class="row content" id="listEvent">
         <h1>Eventos em destaques:</h1>
         
         
@@ -126,7 +126,7 @@
             </div>
         </div>
     </footer><!-- End Footer -->
-    
+
 <form th:action="@{/events}" id="getEvents">
 </form>
 
@@ -134,11 +134,10 @@
     /*<![CDATA[*/
 
     function evento(description, title, subTitle,address,eventTime, rank, month,day) {
-      return "<div class=\"col-md-4\" style=\"padding: 10px 20px 10px 20px\">\
-    <div class=\"row\">\
+        return "<div class=\"row\" style='width:860px;margin:auto;'>\
     <p><img src=\"../../image/evento.jpg\" class=\"img-responsive img-thumbnail\" width=\"100%\"/></p>\
         </div>\
-        <div class=\"row\">\
+        <div class=\"row\" style='width:860px;margin:auto;'>\
     <div class=\"post-date\">\
     <i class=\"fa fa-calendar fa-2x\"></i><br/>\
         <span class=\"month\">"+month+"</span><br/>\
@@ -157,12 +156,14 @@
         <h2 class=\"post-Title\">"+title+"</h2>\
     <h4 class=\"post-sub-title\">"+subTitle+"</h4>\
     <p class=\"post-info\">\
-        <i class=\"fa fa-university\"></i> <a href=\"#\">Instituição</a> <br/>\
-        <i class=\"fa fa-map-o\"></i> "+address+" <br/>\
+        <i class=\"fa fa-university\"></i> <a href=\"#\">Instituição</a> |\
+        <i class=\"fa fa-map-o\"></i> "+address+" |\
         <i class=\"fa fa-clock-o\"></i> "+eventTime+"\
-        <button class=\"btn btn-read-more pull-right\">Leia mais &nbsp;&nbsp;&nbsp;&nbsp;<i class=\"fa fa-angle-right\"></i></button>\
         </p>\
-        </div></div>\
+        <div style=\"text-align: justify\">"+ description+ "\
+    <button class=\"btn btn-read-more pull-right\">Leia mais &nbsp;&nbsp;&nbsp;&nbsp;<i class=\"fa fa-angle-right\"></i></button>\
+        </div>\
+        </div>\
         <br/><br/><br/><br/>\
         ";
     }
@@ -170,11 +171,11 @@
 
 
 
-    $.get(url + "?offset=10&order=desc", function (data) {
+    $.get(url + "?offset=3&order=desc", function (data) {
         data.forEach(function (event) {
             var eventDate = new Date(event.event_time);
             var month = {0:"JAR", 1: "FEV", 2:"MAR", 3: "ABR", 4: "MAI", 5:"JUN", 6:"JUL",7:"AGO",8:"SET",9:"OUT",10:"NOV",11:"DEZ"};
-            $('#eventList').append(evento(event.description,
+            $('#listEvent').append(evento(event.description,
                 event.title, event.sub_title,event.address,event.event_time,event.rank,month[eventDate.getUTCMonth()],eventDate.getUTCDate()));
         })
 
@@ -182,6 +183,5 @@
 
     /*]]>*/
 </script>
-
 </body>
 </html>
