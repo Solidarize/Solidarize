@@ -23,7 +23,6 @@ public class Event {
 	private String address;
 	private LocalDate event_time;
 	private String description;
-	private Integer Liked;
 
 	public Event() {
 	}
@@ -119,14 +118,6 @@ public class Event {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public Integer getLiked() {
-		return Liked;
-	}
-
-	public void setLiked(Integer liked) {
-		Liked = liked;
 	}
 
 }

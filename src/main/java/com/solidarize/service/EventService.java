@@ -71,10 +71,10 @@ public class EventService {
 		if (e == null) {
 			throw new NotFoundException("Event not found");
 		} else {
-			if (e.getLiked() == null) {
-				e.setLiked(1);
+			if (e.getRank() == null) {
+				e.setRank(1);
 			} else {
-				e.setLiked(e.getLiked().intValue() + 1);
+				e.setRank(e.getRank().intValue() + 1);
 			}
 			return eventRepository.save(e);
 		}
@@ -85,8 +85,8 @@ public class EventService {
 		if (e == null) {
 			throw new NotFoundException("Event not found");
 		} else {
-			if (e.getLiked() != null && e.getLiked() > 0) {
-				e.setLiked(e.getLiked().intValue() - 1);
+			if (e.getRank() != null && e.getRank() > 0) {
+				e.setRank(e.getRank().intValue() - 1);
 			}
 			return eventRepository.save(e);
 		}
