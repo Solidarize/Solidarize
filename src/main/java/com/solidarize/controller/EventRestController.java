@@ -37,14 +37,12 @@ public class EventRestController {
 	}
 
 	@RequestMapping(path = "/events", method = GET)
-	public List<Event> getEventsListByTimestamp(@RequestParam(required = false) String offset,
-			@RequestParam(required = false) String order) {
+	public List<Event> getEventsListByTimestamp(@RequestParam(required = false) String offset, @RequestParam(required = false) String order) {
 		return eventService.getEvents(offset, order);
 	}
 
 	@RequestMapping(path = "/events/rank", method = GET)
-	public List<Event> getEventsListByRank(@RequestParam(required = false) String offset,
-			@RequestParam(required = false) String order) {
+	public List<Event> getEventsListByRank(@RequestParam(required = false) String offset, @RequestParam(required = false) String order) {
 		return eventService.getEventsByRank(offset, order);
 	}
 
@@ -66,10 +64,16 @@ public class EventRestController {
 		eventService.deleteEvent(id);
 	}
 
-	@RequestMapping(path = "/event/like", method = PUT)
+	@RequestMapping(path = "/event/{id}/like", method = PUT)
 	@ResponseStatus(OK)
-	public Resource<Event> like(@RequestParam(required = true) final Integer id, final @RequestParam(required = true) Boolean liked) {
-		return new Resource<>(eventService.like(id, liked));
+	public Resource<Event> like(@PathVariable(required = true) final Integer id) {
+		return new Resource<>(eventService.like(id));
+	}
+
+	@RequestMapping(path = "/event/{id}/unlike", method = PUT)
+	@ResponseStatus(OK)
+	public Resource<Event> unlike(@PathVariable(required = true) final Integer id) {
+		return new Resource<>(eventService.unlike(id));
 	}
 
 }

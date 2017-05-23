@@ -1,19 +1,20 @@
 package com.solidarize.service;
 
-import com.solidarize.model.Event;
-import com.solidarize.repository.EventRepository;
+import static com.solidarize.service.EventService.OrderBy.ASC;
+import static com.solidarize.service.EventService.OrderBy.DESC;
+
+import java.util.List;
+
+import javax.ws.rs.BadRequestException;
+import javax.ws.rs.NotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import javax.ws.rs.BadRequestException;
-import javax.ws.rs.NotFoundException;
-
-import java.util.List;
-
-import static com.solidarize.service.EventService.OrderBy.ASC;
-import static com.solidarize.service.EventService.OrderBy.DESC;
+import com.solidarize.model.Event;
+import com.solidarize.repository.EventRepository;
 
 @Service
 public class EventService {
@@ -65,17 +66,8 @@ public class EventService {
 		DESC, ASC
 	}
 
-	public synchronized Event like(final Integer id, final Boolean liked) {
-		Event e = this.getEventById(id);
-		if (Boolean.TRUE.equals(liked)) {
-			e = this.checkLike(e);
-		} else if (Boolean.FALSE.equals(liked)) {
-			e = this.uncheckLike(e);
-		}
-		return e;
-	}
-
-	private Event checkLike(final Event e) {
+	public synchronized Event like(final Integer id) {
+		final Event e = this.getEventById(id);
 		if (e == null) {
 			throw new NotFoundException("Event not found");
 		} else {
@@ -88,7 +80,8 @@ public class EventService {
 		}
 	}
 
-	private Event uncheckLike(final Event e) {
+	public synchronized Event unlike(final Integer id) {
+		final Event e = this.getEventById(id);
 		if (e == null) {
 			throw new NotFoundException("Event not found");
 		} else {
