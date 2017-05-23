@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <title>Solidarize - Todos juntos por um mundo melhor</title>
     
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../../static/style/solidarize.css" />
+    <link rel="stylesheet" href="/style/solidarize.css" />
     
 </head>
 <body>
@@ -62,13 +62,13 @@
     <div class="row">
         <div class="container-fluid">
             <br/>
-            <form th:action="@{/event}" id="createEventForm">
+            <form id="createEventForm">
                 <div class="col-md-10 col-md-offset-1">
                     <div class="form-group">
                         <h3>Título do Evento:</h3>
                         <input tabindex="1" type="text" class="form-control input-lg" placeholder="Título do Evento"
-                               aria-describedby="basic-addon1" name="nome" id="eventTitle"
-                               maxlength="30" th:field="${event.title}"
+                               aria-describedby="basic-addon1" name="title" id="eventTitle"
+                               maxlength="30"
                                data-toggle="tooltip" data-placement="left"
                                title="Título do Evento" rel="txtTooltip"/>
                     </div>
@@ -78,8 +78,8 @@
                     <div class="form-group">
                         <h3>Descrição do Evento:</h3>
                         <textarea tabindex="2" class="form-control" placeholder="Descrição do Evento"
-                               aria-describedby="basic-addon1" name="nome" id="eventDescription"
-                               maxlength="255" rows="20" th:field="${event.description}"
+                               aria-describedby="basic-addon1" name="description" id="eventDescription"
+                               maxlength="255" rows="20"
                                data-toggle="tooltip" data-placement="left"
                                title="Descrição do Evento" rel="txtTooltip"></textarea>
                     </div>
@@ -91,17 +91,17 @@
                         <div class="form-group">
                             <div class="form-inline">
                                 <select tabindex="3" class="form-control" placeholder="Unidade Federativa"
-                                   aria-describedby="basic-addon1" name="nome" id="eventUF"
-                                   th:field="" data-toggle="tooltip" data-placement="left"
+                                   aria-describedby="basic-addon1" name="state" id="eventUF"
+                                    data-toggle="tooltip" data-placement="left"
                                    title="Unidade Federativa do Evento" rel="txtTooltip">
-                                    <option selected>UF</option>
-                                    <option value="AC">PR</option>
-                                    <option value="AL">SC</option>
-                                    <option value="AP">RS</option>                               
+                                    <option selected="true" value="UF">UF</option>
+                                    <option value="PR">PR</option>
+                                    <option value="SC">SC</option>
+                                    <option value="RS">RS</option>                               
                                 </select>
                                 <input tabindex="4" type="text" class="form-control" placeholder="Cidade"
-                                   aria-describedby="basic-addon1" name="nome" id="eventCity"
-                                   maxlength="30" th:field=""
+                                   aria-describedby="basic-addon1" name="city" id="eventCity"
+                                   maxlength="30"
                                    data-toggle="tooltip" data-placement="left"
                                    title="Cidade do Evento" rel="txtTooltip"/>
                             </div>
@@ -109,16 +109,16 @@
                         
                        <div class="form-group">
                             <input tabindex="5" type="text" class="form-control" placeholder="Bairro"
-                                   aria-describedby="basic-addon1" name="nome" id="eventDistrict"
-                                   maxlength="30" th:field=""
+                                   aria-describedby="basic-addon1" name="neighborhood" id="eventDistrict"
+                                   maxlength="30"
                                    data-toggle="tooltip" data-placement="left"
                                    title="Bairro do Evento" rel="txtTooltip"/>
                         </div>
                         
                         <div class="form-group">
                             <input tabindex="6" type="text" class="form-control" placeholder="Logradouro"
-                                   aria-describedby="basic-addon1" name="nome" id="eventAddress"
-                                   maxlength="30" th:field=""
+                                   aria-describedby="basic-addon1" name="house" id="eventAddress"
+                                   maxlength="30"
                                    data-toggle="tooltip" data-placement="left"
                                    title="Bairro do Evento" rel="txtTooltip"/>
                         </div>
@@ -127,7 +127,7 @@
                             <br/>
                             <h3>Foto de divulgação:</h3>
                             <div class="input-group file-preview">
-                                <input placeholder="" type="text" class="form-control file-preview-filename" disabled="disabled" id="fileName">
+                                <input placeholder="" type="text" class="form-control file-preview-filename" disabled="disabled" id="fileName"/>
                                 <!-- don't give a name === doesn't send on POST/GET --> 
                                 <span class="input-group-btn"> 
                                     <!-- file-preview-clear button -->
@@ -149,7 +149,7 @@
                         <div class="input-group pull-left" id="canceldiv">
                             <input tabindex="8" type="reset" value="Cancelar"
                                    class="btn btn-lg btn-danger btn-submit"
-                                   id="submit-form"/>
+                                   id="cancel-btn"/>
                         </div>
                         
                         <div class="input-group pull-right" id="submitdiv">
@@ -157,7 +157,6 @@
                                    class="btn btn-lg btn-success btn-submit"
                                    id="submit-form"/>
                         </div>
-
                     </div>
                 </div>
             </form>
@@ -167,19 +166,23 @@
 /*<![CDATA[*/
 
     $('#createEventForm').submit(function () {
-        var url = $('#createEventForm').attr('action');
+        var url =  "/event"//$('#createEventForm').attr('action');
         var body = $('#createEventForm').serializeArray();
 
         function objectifyForm(formArray) {
 
             var returnArray = {};
             for (var i = 0; i < formArray.length; i++) {
+                var value= formArray[i]['value'];
                 returnArray[formArray[i]['name']] = formArray[i]['value'];
             }
             return returnArray;
         }
 
         body = objectifyForm(body);
+        body["timestamp"]=new Date().toISOString();
+        body["event_time"]=new Date().toISOString();
+        body["address"]=body["state"] +" - "+ body["city"] + " "+ body["neighborhood"] +" "+ body["house"];
         var data=JSON.stringify(body);
         $.ajax({
             url:url,
