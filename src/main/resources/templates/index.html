@@ -167,11 +167,11 @@
         <br/><br/><br/><br/>\
         ";
     }
-    url = $('#getEvents').attr('action');
 
 
 
-    $.get(url + "?offset=3&order=desc", function (data) {
+
+    $.get("/events/rank?offset=3&order=desc", function (data) {
         data.forEach(function (event) {
             var eventDate = new Date(event.event_time);
             var month = {0:"JAR", 1: "FEV", 2:"MAR", 3: "ABR", 4: "MAI", 5:"JUN", 6:"JUL",7:"AGO",8:"SET",9:"OUT",10:"NOV",11:"DEZ"};

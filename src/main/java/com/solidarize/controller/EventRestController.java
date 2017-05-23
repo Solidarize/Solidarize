@@ -36,10 +36,16 @@ public class EventRestController {
         return eventService.getEventById(id);
     }
 
-    @RequestMapping(path = "events", method = GET)
-    public List<Event> getEventsById(@RequestParam(required = false) String offset,
+    @RequestMapping(path = "/events", method = GET)
+    public List<Event> getEventsListByTimestamp(@RequestParam(required = false) String offset,
                                      @RequestParam(required = false) String order) {
         return eventService.getEvents(offset,order);
+    }
+
+    @RequestMapping(path = "/events/rank", method = GET)
+    public List<Event> getEventsListByRank(@RequestParam(required = false) String offset,
+                                     @RequestParam(required = false) String order) {
+        return eventService.getEventsByRank(offset,order);
     }
 
 

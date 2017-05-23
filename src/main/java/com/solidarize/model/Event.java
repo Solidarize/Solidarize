@@ -16,7 +16,7 @@ public class Event {
     private Integer id;
     private String name;
     private String owner;
-    private Integer rank;
+    private int rank;
     private LocalDate timestamp;
     private String title;
     private String sub_title;

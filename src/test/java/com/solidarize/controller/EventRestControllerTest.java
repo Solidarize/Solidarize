@@ -45,7 +45,7 @@ public class EventRestControllerTest {
         String order = "desc";
         List<Event> event = Arrays.asList(new Event("name", "owner", 3, LocalDate.now(), "title", "subTitle", "address", LocalDate.now(), "description"));
         when(service.getEvents(eq(offset),eq(order))).thenReturn(event);
-        List<Event> response = restController.getEventsById(offset,order);
+        List<Event> response = restController.getEventsListByTimestamp(offset,order);
         assertEquals(event, response);
     }
 

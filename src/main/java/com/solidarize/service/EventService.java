@@ -51,6 +51,16 @@ public class EventService {
         eventRepository.delete(id);
     }
 
+    public List<Event> getEventsByRank(String offset, String order) {
+        Pageable pageable = new PageRequest(0, Integer.parseInt(offset));
+        if (order.toUpperCase().equals(DESC.name())) {
+            return eventRepository.findAllByOrderByRankDesc(pageable);
+        } else if (order.toUpperCase().equals(ASC.name())) {
+            return eventRepository.findAllByOrderByRankAsc(pageable);
+        }
+        throw new BadRequestException();
+    }
+
     enum OrderBy {
         DESC,
         ASC
