@@ -16,15 +16,15 @@ public class User {
 	private String password;
 /* 1 - Instituição
    2 - Voluntário*/
-	private byte type;
+	private int type;
 
-	public User(Integer id, String login, String password, byte type) {
+	public User(Integer id, String login, String password, int type) {
 		this.id = id;
 		this.login = login;
 		this.password = password;
 		this.type = type;
 	} 
-	public User(String login, String password, byte type) {
+	public User(String login, String password, int type) {
 		this.login = login;
 		this.password = password;
 		this.type = type;
@@ -49,7 +49,7 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public byte getType() {
+	public int getType() {
 		return type;
 	}
 	public void setType(byte type) {

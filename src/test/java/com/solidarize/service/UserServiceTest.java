@@ -27,20 +27,20 @@ public class UserServiceTest {
     public void setUp() throws Exception {
         service = new UserService(repository);
     }
-    
+
     @Test
     public void shouldBeAbleToFindUserByID() throws Exception {
         int id = 1;
-        User user = new User("Instituicao", "123456", (byte) 1);
+        User user = new User("Instituicao", "123456", 1);
         when(repository.findById(eq(id))).thenReturn(user);
         User response = service.findUserById(id);
         assertEquals(user, response);
     }
-    
+
     @Test
     public void shouldBeAbleToFindUserByLogin() throws Exception {
-    	String login = "Instituicao2";
-        User user = new User("Instituicao2","789456",(byte)1);
+        String login = "Instituicao2";
+        User user = new User("Instituicao2", "789456", 1);
         when(repository.findByLogin(eq(login))).thenReturn(user);
         User response = service.findUserByLogin(login);
         assertEquals(user, response);
@@ -48,7 +48,7 @@ public class UserServiceTest {
 
     @Test
     public void shouldBeAbleToSaveUser() throws Exception {
-        User user = new User("Colaborador","123456",(byte)2);
+        User user = new User("Colaborador", "123456", 2);
         when(repository.save(eq(user))).thenReturn(user);
         User response = service.saveUser(user);
         assertEquals(user, response);
@@ -61,13 +61,13 @@ public class UserServiceTest {
         service.deleteUser(user);
         verify(repository).delete(user);
     }
-    
-	 @Test
-	    public void shouldBeAbeToAllUsers() throws Exception {
-	    	Iterable<User> user = Arrays.asList(new User("Colaborador2","654321",(byte)2));
-	        when(repository.findAll()).thenReturn(user);
-	        Iterable<User> response = service.allUsers();
-	        assertEquals(user, response);
-	    }
+
+    @Test
+    public void shouldBeAbeToAllUsers() throws Exception {
+        Iterable<User> user = Arrays.asList(new User("Colaborador2", "654321", 2));
+        when(repository.findAll()).thenReturn(user);
+        Iterable<User> response = service.allUsers();
+        assertEquals(user, response);
+    }
 }
 
