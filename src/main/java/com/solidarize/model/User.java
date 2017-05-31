@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
-@Entity
+@Entity(name = "solidarize_user")
 public class User {
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_id_seq")
