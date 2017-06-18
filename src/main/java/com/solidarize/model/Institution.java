@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Institution {
@@ -24,6 +26,7 @@ public class Institution {
 	private String password;
 	
 	@OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Event> events;
 	
 	public Institution() {
