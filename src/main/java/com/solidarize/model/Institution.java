@@ -1,9 +1,13 @@
 package com.solidarize.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 
@@ -18,6 +22,9 @@ public class Institution {
 	private String address;
 	private String description;
 	private String password;
+	
+	@OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+	private List<Event> events;
 	
 	public Institution() {
 		super();
@@ -79,4 +86,14 @@ public class Institution {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
+	}
+	
+	
 }

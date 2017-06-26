@@ -1,12 +1,15 @@
 package com.solidarize.model;
 
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
-import java.time.LocalDate;
 
 @Entity
 public class Event {
@@ -15,7 +18,10 @@ public class Event {
     @SequenceGenerator(name = "event_id_seq", sequenceName = "event_id_seq", allocationSize = 1)
     private Integer id;
     private String name;
-    private String owner;
+    
+    @ManyToOne
+    @JoinColumn(name = "owner")
+    private Institution owner;
     private int rank;
     private LocalDate timestamp;
     private String title;
@@ -27,7 +33,7 @@ public class Event {
     public Event() {
     }
 
-    public Event(String name, String owner, Integer rank,
+    public Event(String name, Institution owner, Integer rank,
                  LocalDate timestamp, String title,
                  String sub_title, String address, LocalDate event_time, String description) {
         this.name = name;
@@ -45,7 +51,7 @@ public class Event {
         return name;
     }
 
-    public String getOwner() {
+    public Institution getOwner() {
         return owner;
     }
 
@@ -85,7 +91,7 @@ public class Event {
         this.name = name;
     }
 
-    public void setOwner(String owner) {
+    public void setOwner(Institution owner) {
         this.owner = owner;
     }
 
