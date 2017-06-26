@@ -1,0 +1,1 @@
+ALTER TABLE institution ADD PRIMARY KEY (id);

@@ -1,6 +1,7 @@
 package com.solidarize.service;
 
 import com.solidarize.model.Event;
+import com.solidarize.model.Institution;
 import com.solidarize.repository.EventRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -35,7 +36,8 @@ public class EventServiceTest {
     @Test
     public void shouldBeAbleToGetEvent() throws Exception {
         int id = 1;
-        Event event = new Event("name", "owner", 2, LocalDate.now(), "title", "subTitle", "address", LocalDate.now(), "description");
+        Institution owner = new Institution("oi", "123456", "asdasds", "aaaaa", "aaaaaa");
+        Event event = new Event("name", owner, 2, LocalDate.now(), "title", "subTitle", "address", LocalDate.now(), "description");
         when(repository.findEventById(eq(id))).thenReturn(event);
         Event response = service.getEventById(id);
         assertEquals(event, response);
@@ -43,7 +45,8 @@ public class EventServiceTest {
 
     @Test
     public void shouldBeAbleToSaveAnEvent() throws Exception {
-        Event event = new Event("name", "owner", 2, LocalDate.now(), "title", "subTitle", "address", LocalDate.now(), "description");
+    	Institution owner = new Institution("oi", "123456", "asdasds", "aaaaa", "aaaaaa");
+        Event event = new Event("name", owner, 2, LocalDate.now(), "title", "subTitle", "address", LocalDate.now(), "description");
         when(repository.save(eq(event))).thenReturn(event);
         Event response = service.createEvent(event);
         assertEquals(event, response);
@@ -60,7 +63,8 @@ public class EventServiceTest {
     public void shouldBeAbleToRetrieveEventsOrderedByDESC() throws Exception {
         String offset = "10";
         String order = "desc";
-        List<Event> event = Arrays.asList(new Event("name", "owner", 2, LocalDate.now(), "title", "subTitle", "address", LocalDate.now(), "description"));
+        Institution owner = new Institution("oi", "123456", "asdasds", "aaaaa", "aaaaaa");
+        List<Event> event = Arrays.asList(new Event("name", owner, 2, LocalDate.now(), "title", "subTitle", "address", LocalDate.now(), "description"));
         when(repository.findAllByOrderByTimestampDesc(any())).thenReturn(event);
         List<Event> response = service.getEvents(offset, order);
         assertEquals(event, response);
@@ -71,7 +75,8 @@ public class EventServiceTest {
     public void shouldBeAbleToRetrieveEventsOrderedByASC() throws Exception {
         String offset = "10";
         String order = "asc";
-        List<Event> event = Arrays.asList(new Event("name", "owner", 2, LocalDate.now(), "title", "subTitle", "address", LocalDate.now(), "description"));
+        Institution owner = new Institution("oi", "123456", "asdasds", "aaaaa", "aaaaaa");
+        List<Event> event = Arrays.asList(new Event("name", owner, 2, LocalDate.now(), "title", "subTitle", "address", LocalDate.now(), "description"));
         when(repository.findAllByOrderByTimestampAsc(any())).thenReturn(event);
         List<Event> response = service.getEvents(offset, order);
         assertEquals(event, response);
