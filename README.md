@@ -1,3 +1,6 @@
+# Feedback
+[Feedback da apresentação preliminar](docs/SOLIDARIZE_PD_ParecerPreliminar.pdf)
+
 [![Build Status](https://travis-ci.org/willmenn/Solidarize.svg?branch=master)](https://travis-ci.org/willmenn/Solidarize)
 # Solidarize
 
