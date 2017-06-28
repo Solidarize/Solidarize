@@ -5,3 +5,14 @@ deploy:
   app: solidarize-dev
   api_key:
     secure: wXWB6iDCC3TkdAhK/vi0Np6F0Dr1Dl7koGwOuU9VrEItQgoP5khnKBqc34A9TF0rg6B66M9SkSVPlxb3z7mRAZmva7afiYW9DYQf/+PD3K3TkJE9sb3ViYdJ+cjzaQL/tVh/rsAArQXlkHjCphk9c1WRtKQ43+pEKa0kJEoWdoLXeaM7cp39iTN3yGyizge2UFBJiRF4zCRqCq+ljIf8k3+djeVj7AixulkPq0xS/IlUQqswL/qhk83AlF0dE7srmCxl7JwnkxcaQHxcPFF6/JfMQFfYXBbXk67TrsFDeclINVXYZAl32NfUWs+q/MX/h3RhmU6waZDzTLCbpW2vxH5zYpagEne5npJMuzMlYkoRL/1UoJb7j9Dk0PV1XVfTxRdABa2drv3L/6SUhr5F25/X/FPie5OF80zXGhHQs4drkVRFKYcHuRYyeVEanRoAV+Zcn3LVw9KPUjSRrHSqeX39ZpDfypAGR9MSLEo6kO2qYOU4UiTabUWPeMCebbgeWR8o5JyJgn9H4WGJWyrLm8wDaNe3ZBnPxxUpXdzCz3G+qqxz5JWJt6PtTYNzgylev3ko6xvp3kqrk3JwRKXtpQ7jMWMXvWtB/TxsRabMWXXGmv7E8/9IKhstHPgCZQ7mYkS1hkmd0mJwTIdderAbnXW2djXq8/DySIQT1S8xFE4=
+#configuracao sonar - inicio
+addons:
+  sonarcloud:
+    organization: "solidarize"
+    token:
+      secure: 7c9058e1848e1c0f96347be9db2735affe1a1b6f
+branches:
+      - master  
+script:
+  - sonar-scanner 
+#configuracao sonar - final  
