@@ -1,0 +1,1 @@
+ALTER TABLE solidarize_user ADD COLUMN email VARCHAR(254);
