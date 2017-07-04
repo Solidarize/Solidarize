@@ -1,7 +1,10 @@
 package com.solidarize.controller;
 
 import com.solidarize.model.Event;
+import com.solidarize.model.User;
 import com.solidarize.service.EventService;
+import com.solidarize.service.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Resource;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,10 +28,10 @@ import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 public class EventRestController {
 
     private EventService eventService;
-
+    
     @Autowired
     public EventRestController(EventService eventService) {
-        this.eventService = eventService;
+        this.eventService = eventService;        
     }
 
     @RequestMapping(path = "/event/{id}", method = GET)
@@ -66,5 +69,4 @@ public class EventRestController {
     public void deleteEvent(@PathVariable("id") Integer id) {
         eventService.deleteEvent(id);
     }
-
 }

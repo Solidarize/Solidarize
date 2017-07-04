@@ -1,5 +1,6 @@
 package com.solidarize.model;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -18,7 +19,7 @@ public class User {
     @Id
 //    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_id_seq")
 //    @SequenceGenerator(name = "user_id_seq", sequenceName = "user_id_seq", allocationSize = 1)
-    private Integer id;
+    private BigInteger id;
     private String login;
     private String password;
     /* 1 - Instituição
@@ -30,7 +31,7 @@ public class User {
     @JoinTable(name = "event_user", joinColumns = @JoinColumn(name = "solidarize_user", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "event", referencedColumnName = "id"))
     List<Event> events;
 
-    public User(Integer id, String login, String password, int type, String mail) {
+    public User(BigInteger id, String login, String password, int type, String mail) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -48,11 +49,11 @@ public class User {
     public User() {
     }
 
-    public Integer getId() {
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 
