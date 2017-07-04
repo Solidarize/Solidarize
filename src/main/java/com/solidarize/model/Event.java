@@ -2,16 +2,19 @@ package com.solidarize.model;
 
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Event {
@@ -31,6 +34,9 @@ public class Event {
     private String address;
     private LocalDate event_time;
     private String description;
+    
+    @ManyToMany(mappedBy = "events")
+    List<User> users;
 
     public Event() {
     }
@@ -128,4 +134,13 @@ public class Event {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @JsonIgnore
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}    
 }

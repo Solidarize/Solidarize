@@ -1,16 +1,23 @@
 package com.solidarize.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity(name = "solidarize_user")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_id_seq")
-    @SequenceGenerator(name = "user_id_seq", sequenceName = "user_id_seq", allocationSize = 1)
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_id_seq")
+//    @SequenceGenerator(name = "user_id_seq", sequenceName = "user_id_seq", allocationSize = 1)
     private Integer id;
     private String login;
     private String password;
@@ -18,6 +25,10 @@ public class User {
        2 - Voluntário*/
     private int type;
     private String mail;
+    
+    @ManyToMany
+    @JoinTable(name = "event_user", joinColumns = @JoinColumn(name = "solidarize_user", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "event", referencedColumnName = "id"))
+    List<Event> events;
 
     public User(Integer id, String login, String password, int type, String mail) {
         this.id = id;
@@ -76,4 +87,13 @@ public class User {
     public void setMail(String mail) {
         this.mail = mail;
     }
+
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
+	}
+    
 }
