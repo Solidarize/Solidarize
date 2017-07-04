@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
@@ -30,7 +31,7 @@ public class UserServiceTest {
 
     @Test
     public void shouldBeAbleToFindUserByID() throws Exception {
-        int id = 1;
+    	BigInteger id = BigInteger.ONE;
         User user = new User("Instituicao", "123456", 1,"");
         when(repository.findById(eq(id))).thenReturn(user);
         User response = service.findUserById(id);
@@ -56,7 +57,7 @@ public class UserServiceTest {
 
     @Test
     public void shouldBeAbleToDeleteUser() throws Exception {
-        int id = 1;
+    	BigInteger id = BigInteger.ONE;
         User user = service.findUserById(id);
         service.deleteUser(user);
         verify(repository).delete(user);

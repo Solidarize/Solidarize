@@ -1,5 +1,7 @@
 package com.solidarize.service;
 
+import java.math.BigInteger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +17,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User findUserById(Integer id){
+    public User findUserById(BigInteger id){
 		return userRepository.findById(id);
 	}
     public User findUserByLogin(String login){
