@@ -1,8 +1,13 @@
 package com.solidarize.controller;
 
 
-import com.solidarize.model.User;
-import com.solidarize.service.UserService;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.when;
+
+import java.math.BigInteger;
+import java.util.Arrays;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,11 +15,8 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.hateoas.Resource;
 
-import java.util.Arrays;
-
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.when;
+import com.solidarize.model.User;
+import com.solidarize.service.UserService;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserRestControllerTest {
@@ -31,7 +33,7 @@ public class UserRestControllerTest {
 
     @Test
     public void shouldBeAbeToGetUserById() throws Exception {
-        int id = 1;
+    	BigInteger id = BigInteger.ONE;
         User user = new User("Instituicao", "123456",  1,"");
         when(service.findUserById(eq(id))).thenReturn(user);
         User response = restController.getUserById(id);

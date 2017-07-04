@@ -1,18 +1,5 @@
 package com.solidarize.controller;
 
-import com.solidarize.model.User;
-import com.solidarize.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.Resource;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
-
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
@@ -20,6 +7,19 @@ import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import static org.springframework.web.bind.annotation.RequestMethod.PUT;
+
+import java.math.BigInteger;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Resource;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.solidarize.model.User;
+import com.solidarize.service.UserService;
 
 @RestController
 public class UserRestController {
@@ -32,8 +32,8 @@ public class UserRestController {
     }
 
     @RequestMapping(path = "/user/{id}", method = GET)
-    public User getUserById(@PathVariable("id") Integer id) {
-        return userService.findUserById(id);
+    public User getUserById(@PathVariable("id") BigInteger id) {
+        return userService.findUserById(id);        
     }
 
     @RequestMapping(path = "users", method = GET)
@@ -62,7 +62,7 @@ public class UserRestController {
 
     @RequestMapping(path = "user/{id}", method = DELETE)
     @ResponseStatus(OK)
-    public void deleteUser(@PathVariable("id") Integer id) {
+    public void deleteUser(@PathVariable("id") BigInteger id) {
     	User user = userService.findUserById(id);
         userService.deleteUser(user);
     }
