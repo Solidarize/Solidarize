@@ -16,6 +16,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.hateoas.Resource;
 
 import com.solidarize.model.User;
+import com.solidarize.service.EventService;
 import com.solidarize.service.UserService;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -23,12 +24,15 @@ public class UserRestControllerTest {
 
     @Mock
     private UserService service;
+    
+    @Mock
+    private EventService eventService;
 
     private UserRestController restController;
 
     @Before
     public void setUp() throws Exception {
-        restController = new UserRestController(service);
+        restController = new UserRestController(service, eventService);
     }
 
     @Test
