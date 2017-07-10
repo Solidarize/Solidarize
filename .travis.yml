@@ -14,5 +14,8 @@ addons:
 branches:
       - master  
 script:
-  - sonar-scanner 
+  - mvn clean package
+  - mvn cobertura:cobertura -Dcobertura.report.format=xml
+  - mvn org.jacoco:jacoco-maven-plugin:prepare-agent install -Dmaven.test.failure.ignore=true
+  - sonar-scanner  
 #configuracao sonar - final  
