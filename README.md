@@ -8,7 +8,7 @@ ___
 
 [Heroku Link](http://solidarize-dev.herokuapp.com/)
 
-[Travis Link](https://travis-ci.org/willmenn/Solidarize)
+[Travis Link](https://travis-ci.org/Solidarize/Solidarize)
 
 [Sonar Link](https://sonarcloud.io/component_measures?id=com.solidarize)
 
