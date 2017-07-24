@@ -1,0 +1,1 @@
+create table tag ( id integer, identifier integer, tagname varchar(50));
