@@ -1,0 +1,48 @@
+CREATE DATABASE "Solidarize"
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Portuguese_Brazil.1252'
+    LC_CTYPE = 'Portuguese_Brazil.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+
+create table Categoria(
+Categoria varchar(50) not null,
+Id_Categoria serial primary key);
+
+insert into Categoria values('Doação de Sangue');
+insert into Categoria values('Doação de Agasalho');
+insert into Categoria values('Pets');
+insert into Categoria values('Corrida Colaborativa');
+
+
+create table instituicao(
+Nome varchar(50) not null,
+Descricao varchar(120) not null,    
+Id_Instituicao serial primary key);
+
+insert into instituicao values('Hospital Santa Casa','hospital de auxilio a pessoas necessitadas');
+insert into instituicao values('Hospital de pronto socorro','hospital que realiza resgate de pessoa com casos graves');
+insert into instituicao values('Hospital Cristo Redentor','hospital especializado em fraturas');
+ 
+
+create table Evento(
+Nome varchar(50) not null,
+Descricao varchar(120) not null,
+rank int not null,    
+Id_Instituicao int references instituicao(Id_Instituicao),
+Id_Evento serial primary key); 
+
+insert into evento values ('Doação de Sangue pra Crianças com Leucemia','Evento para reunir sangue para crianças com leucemia',0,1);
+insert into evento values ('Campanha do agasalho','Evento que busca arrecadação de agasalho para moradores de rua',0,2);
+insert into evento values ('14ª Corrida pela Vida','Corrida pela vida, buscando mostrar a jovens depressivos sentido da vida, que viver vale a pena',0,3);
+
+create table CatEventos(
+Id_Evento int references Evento(Id_Evento),   
+Id_Categoria int references categoria(Id_Categoria));
+
+insert into cateventos values(1,1);
+insert into cateventos values(2,2);
+insert into cateventos values(3,4);
+   
